@@ -1,0 +1,701 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   style.css
+   Minimalist Retro-Tech — Muh. Aman Romansyah Portfolio
+   GitHub Pages static version
+════════════════════════════════════════════════════════════════════════════ */
+
+
+/* ── 1. Design Tokens ───────────────────────────────────────────────────── */
+:root {
+  /* Background layers */
+  --bg:           #0d0d0d;
+  --bg-elevated:  #141414;
+  --bg-terminal:  #1a1a1a;
+  --bg-card:      #161616;
+
+  /* Borders */
+  --border:       #2a2a2a;
+  --border-dim:   #222;
+
+  /* Text */
+  --text:         #e0e0e0;
+  --text-muted:   #888888;
+  --text-dim:     #555555;
+
+  /* Accent colours */
+  --green:        #00ff41;
+  --green-dim:    rgba(0, 255, 65, 0.08);
+  --green-glow:   0 0 12px rgba(0, 255, 65, 0.35), 0 0 30px rgba(0, 255, 65, 0.12);
+  --cyan:         #00ffff;
+  --cyan-dim:     rgba(0, 255, 255, 0.08);
+
+  /* Traffic-light dots */
+  --dot-red:      #ff5f56;
+  --dot-yellow:   #ffbd2e;
+  --dot-green:    #27c93f;
+
+  /* Typography */
+  --font-mono: 'Fira Code', 'JetBrains Mono', 'Courier New', Courier, monospace;
+
+  /* Layout */
+  --radius:       6px;
+  --max-w:        1100px;
+  --pad-x:        clamp(1rem, 5vw, 3rem);
+  --section-gap:  clamp(4rem, 8vw, 7rem);
+
+  /* Easing */
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+
+/* ── 2. Reset & Base ────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  line-height: 1.65;
+  overflow-x: hidden;
+  /* Subtle CRT scanline overlay */
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.12) 2px,
+    rgba(0, 0, 0, 0.12) 4px
+  );
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ── 3. Layout Utilities ────────────────────────────────────────────────── */
+.section-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--pad-x);
+}
+
+.section-title {
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  color: var(--cyan);
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.prompt-prefix {
+  color: var(--green);
+}
+
+
+/* ── 4. Site Header ─────────────────────────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(13, 13, 13, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0.9rem var(--pad-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  color: var(--green);
+  transition: filter 0.2s var(--ease);
+}
+.logo:hover {
+  filter: drop-shadow(0 0 6px var(--green));
+}
+.logo-svg {
+  width: 36px;
+  height: 36px;
+  image-rendering: pixelated;
+}
+
+/* Desktop nav */
+.nav-desktop {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  position: relative;
+  padding-bottom: 3px;
+  transition: color 0.2s var(--ease);
+}
+.nav-link::before {
+  content: '~/';
+  color: var(--green);
+  opacity: 0;
+  transition: opacity 0.2s var(--ease);
+}
+.nav-link:hover {
+  color: var(--text);
+}
+.nav-link:hover::before {
+  opacity: 1;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--green);
+  transition: width 0.25s var(--ease);
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Hamburger button */
+.hamburger {
+  display: none; /* shown only on mobile via media query */
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--green);
+  border-radius: 2px;
+  transition: transform 0.25s var(--ease), opacity 0.2s var(--ease);
+}
+
+/* Animated X when open */
+.hamburger[aria-expanded="true"] .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger[aria-expanded="true"] .bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburger[aria-expanded="true"] .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile nav panel */
+.nav-mobile {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border);
+  padding: 1rem 0;
+  animation: slideDown 0.25s var(--ease);
+}
+.nav-mobile[hidden] {
+  display: none;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.nav-link-mobile {
+  padding: 0.75rem var(--pad-x);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  transition: color 0.15s, background 0.15s;
+}
+.nav-link-mobile:hover {
+  color: var(--green);
+  background: var(--green-dim);
+}
+
+
+/* ── 5. Terminal Window Component ───────────────────────────────────────── */
+.terminal-window {
+  background: var(--bg-terminal);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s var(--ease);
+}
+.terminal-window:hover {
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 0 1px var(--border),
+    inset 0 0 60px rgba(0, 255, 65, 0.025);
+}
+
+.terminal-titlebar {
+  background: #242424;
+  padding: 0.55rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.tb-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.tb-red    { background: var(--dot-red);    }
+.tb-yellow { background: var(--dot-yellow); }
+.tb-green  { background: var(--dot-green);  }
+
+.tb-title {
+  margin-left: 0.6rem;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+.terminal-body {
+  padding: 1.25rem 1.5rem;
+  font-size: clamp(0.8rem, 1.8vw, 0.93rem);
+  line-height: 1;
+  min-height: 180px;
+}
+
+/* Terminal text classes (applied by script.js) */
+.t-prompt  { color: var(--green);      font-weight: 600; }
+.t-cmd     { color: var(--text);       }
+.t-output  { color: var(--text-muted); display: block; margin: 0.15rem 0 0.5rem 1.2rem; }
+.t-success { color: var(--cyan);       }
+.t-line    { display: block;           }
+
+/* Blinking block cursor */
+.cursor-blink {
+  display: inline-block;
+  width: 8px;
+  height: 0.9em;
+  background: var(--green);
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+
+/* ── 6. Hero Section ────────────────────────────────────────────────────── */
+.hero {
+  padding: clamp(4rem, 8vw, 7rem) 0 clamp(3rem, 6vw, 5rem);
+}
+
+.hero-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--pad-x);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.hero-terminal {
+  min-width: 0; /* prevents grid blowout */
+}
+
+/* Avatar */
+.hero-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.avatar-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pixel-avatar {
+  width: clamp(100px, 14vw, 160px);
+  height: auto;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 65, 0.3));
+  transition: filter 0.3s var(--ease);
+}
+.pixel-avatar:hover {
+  filter: drop-shadow(0 0 18px rgba(0, 255, 65, 0.6));
+  animation: glitch 0.4s steps(2) infinite;
+}
+
+@keyframes glitch {
+  0%   { transform: translate(0,     0); }
+  20%  { transform: translate(-2px,  1px); }
+  40%  { transform: translate( 2px, -1px); }
+  60%  { transform: translate(-1px,  2px); }
+  80%  { transform: translate( 1px, -2px); }
+  100% { transform: translate(0,     0); }
+}
+
+.avatar-label {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+
+/* ── 7. Skills Section ──────────────────────────────────────────────────── */
+.skills-section {
+  padding: var(--section-gap) 0;
+  border-top: 1px solid var(--border-dim);
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.skill-tag {
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  padding: 0.3rem 0.8rem;
+  font-size: 0.78rem;
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+  cursor: default;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.skill-tag:hover {
+  background: var(--cyan-dim);
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+}
+
+
+/* ── 8. Projects Section ────────────────────────────────────────────────── */
+.projects-section {
+  padding: var(--section-gap) 0;
+  border-top: 1px solid var(--border-dim);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Project Card */
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.5rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* children manage their own spacing */
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition:
+    border-color 0.25s var(--ease),
+    box-shadow   0.3s  var(--ease),
+    transform    0.25s var(--ease);
+}
+
+/* Subtle green radial glow on hover (behind card content) */
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top left, rgba(0, 255, 65, 0.04), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+  pointer-events: none;
+}
+.project-card:hover {
+  border-color: var(--green);
+  box-shadow: var(--green-glow);
+  transform: translateY(-3px);
+}
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 0.7rem;
+}
+
+.card-icon {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+.card-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
+  flex: 1;
+  line-height: 1.4;
+}
+.card-title::before {
+  content: '[/] ';
+  color: var(--cyan);
+  font-size: 0.78em;
+}
+
+.card-date {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+  align-self: center;
+  margin-left: auto;
+}
+
+.card-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 0.9rem;
+  flex: 1; /* pushes tags and link toward card bottom */
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.card-tag {
+  font-size: 0.7rem;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+  letter-spacing: 0.04em;
+  transition: border-color 0.2s, color 0.2s;
+}
+.project-card:hover .card-tag {
+  border-color: rgba(0, 255, 65, 0.3);
+  color: var(--text-muted);
+}
+
+/* GitHub link — terminal-prompt style */
+.card-github-link {
+  display: inline-block;
+  font-size: 0.78rem;
+  color: var(--green);
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  margin-top: auto; /* pin to card bottom */
+  transition: color 0.2s, border-color 0.2s, text-shadow 0.2s;
+  cursor: pointer;
+  position: relative;
+  z-index: 1; /* above ::before glow layer */
+}
+.card-github-link:hover {
+  color: var(--green);
+  border-bottom-color: var(--green);
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+}
+
+
+/* ── 9. Contact Footer ──────────────────────────────────────────────────── */
+.contact-footer {
+  padding: var(--section-gap) 0 clamp(3rem, 6vw, 5rem);
+  border-top: 1px solid var(--border-dim);
+}
+
+.contact-terminal {
+  max-width: 640px;
+}
+
+.contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 1.5rem;
+}
+
+.prompt {
+  color: var(--green);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.cmd {
+  color: var(--cyan);
+  font-size: 0.88rem;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 0.5rem;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius);
+  transition:
+    color        0.2s,
+    border-color 0.2s,
+    background   0.2s,
+    box-shadow   0.2s;
+}
+.contact-link svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.contact-link:hover {
+  color: var(--green);
+  border-color: var(--green);
+  background: var(--green-dim);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.15);
+}
+
+.footer-copy {
+  margin-top: 2.5rem;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+
+
+/* ── 10. Scroll-Reveal Animation ────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ── 11. Scroll Margin — prevent sticky header overlap on anchor jump ────── */
+section[id],
+footer[id] {
+  scroll-margin-top: 80px;
+}
+
+
+/* ── 12. Responsive Breakpoints ─────────────────────────────────────────── */
+
+/* ── Tablet  ≤ 900px ── */
+@media (max-width: 900px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+  .hero-avatar {
+    order: -1; /* avatar appears above terminal on tablet */
+    justify-content: center;
+    text-align: center;
+  }
+  .pixel-avatar {
+    width: 110px;
+  }
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+}
+
+/* ── Mobile  ≤ 600px ── */
+@media (max-width: 600px) {
+  /* Navigation */
+  .nav-desktop { display: none; }
+  .hamburger   { display: flex; }
+
+  /* Hero */
+  .hero { padding-top: 3rem; }
+  .hero-inner { gap: 2rem; }
+
+  /* Avatar — centred on mobile */
+  .hero-avatar {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+  .avatar-frame {
+    width: 100%;
+    align-items: center;
+  }
+  .pixel-avatar { width: 88px; }
+
+  /* Terminal */
+  .terminal-body { padding: 1rem; font-size: 0.8rem; }
+  .tb-title      { display: none; }
+
+  /* Projects grid — single column */
+  .projects-grid { grid-template-columns: 1fr; }
+
+  /* Contact */
+  .contact-links { flex-direction: column; }
+  .contact-link  { justify-content: center; }
+
+  /* Section headings */
+  .section-title { font-size: 0.8rem; }
+}
+
+
+/* ── 13. Focus Styles (Accessibility) ───────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+
+/* ── 14. Text Selection ─────────────────────────────────────────────────── */
+::selection {
+  background: rgba(0, 255, 65, 0.25);
+  color: var(--text);
+}

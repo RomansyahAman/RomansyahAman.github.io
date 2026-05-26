@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Muh. Aman Romansyah — IoT Enthusiast, Robotics Researcher &amp; Programmer. Personal portfolio.">
+  <title>Muh. Aman Romansyah — Portfolio</title>
+
+  <!-- Google Fonts: Fira Code (monospace, used throughout) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       HEADER / NAVIGATION
+  ════════════════════════════════════════════════════════════ -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+
+      <!-- Pixel-art Space Invader logo -->
+      <a href="#" class="logo" aria-label="Back to top">
+        <svg class="logo-svg" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="8"  y="2"  width="4" height="4" fill="currentColor"/>
+          <rect x="20" y="2"  width="4" height="4" fill="currentColor"/>
+          <rect x="4"  y="6"  width="4" height="4" fill="currentColor"/>
+          <rect x="8"  y="6"  width="16" height="4" fill="currentColor"/>
+          <rect x="24" y="6"  width="4" height="4" fill="currentColor"/>
+          <rect x="2"  y="10" width="28" height="4" fill="currentColor"/>
+          <rect x="2"  y="14" width="4" height="4" fill="currentColor"/>
+          <rect x="8"  y="14" width="16" height="4" fill="currentColor"/>
+          <rect x="26" y="14" width="4" height="4" fill="currentColor"/>
+          <rect x="6"  y="18" width="4" height="4" fill="currentColor"/>
+          <rect x="22" y="18" width="4" height="4" fill="currentColor"/>
+          <rect x="2"  y="22" width="4" height="4" fill="currentColor"/>
+          <rect x="10" y="22" width="12" height="4" fill="currentColor"/>
+          <rect x="26" y="22" width="4" height="4" fill="currentColor"/>
+        </svg>
+      </a>
+
+      <!-- Desktop navigation -->
+      <nav class="nav-desktop" aria-label="Main navigation">
+        <a href="#about"    class="nav-link">About</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact"  class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Hamburger button (mobile only — shown via CSS) -->
+      <button
+        class="hamburger"
+        id="hamburger"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+
+    <!-- Mobile navigation overlay -->
+    <nav class="nav-mobile" id="mobile-menu" aria-label="Mobile navigation" hidden>
+      <a href="#about"    class="nav-link-mobile" data-close-menu>~/about</a>
+      <a href="#projects" class="nav-link-mobile" data-close-menu>~/projects</a>
+      <a href="#contact"  class="nav-link-mobile" data-close-menu>~/contact</a>
+    </nav>
+  </header>
+
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         HERO — ABOUT SECTION
+    ════════════════════════════════════════════════════════════ -->
+    <section class="hero" id="about">
+      <div class="hero-inner">
+
+        <!-- Terminal window — content is typed in by script.js -->
+        <div class="terminal-window hero-terminal">
+          <div class="terminal-titlebar">
+            <span class="tb-dot tb-red"    aria-hidden="true"></span>
+            <span class="tb-dot tb-yellow" aria-hidden="true"></span>
+            <span class="tb-dot tb-green"  aria-hidden="true"></span>
+            <span class="tb-title">romansyahaman@linux:~/portfolio</span>
+          </div>
+          <div class="terminal-body" id="terminal-body" aria-live="polite" aria-label="Terminal output">
+            <!-- Typing animation is injected here by script.js -->
+          </div>
+        </div>
+
+        <!-- Pixel-art avatar -->
+        <div class="hero-avatar">
+          <div class="avatar-frame">
+            <svg
+              class="pixel-avatar"
+              viewBox="0 0 64 80"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-label="Pixel art avatar of Muh. Aman Romansyah"
+            >
+              <!-- Skin / face -->
+              <rect x="20" y="4"  width="24" height="28" fill="#C8A882"/>
+              <!-- Hair -->
+              <rect x="18" y="2"  width="28" height="8"  fill="#2B1B0E"/>
+              <rect x="16" y="6"  width="4"  height="8"  fill="#2B1B0E"/>
+              <rect x="44" y="6"  width="4"  height="8"  fill="#2B1B0E"/>
+              <!-- Eyes -->
+              <rect x="24" y="14" width="4"  height="4"  fill="#1a1a1a"/>
+              <rect x="36" y="14" width="4"  height="4"  fill="#1a1a1a"/>
+              <!-- Mouth -->
+              <rect x="26" y="24" width="12" height="3"  fill="#a07050"/>
+              <!-- Neck -->
+              <rect x="28" y="32" width="8"  height="6"  fill="#C8A882"/>
+              <!-- Suit (dark blue) -->
+              <rect x="14" y="38" width="36" height="26" fill="#1E2A3A"/>
+              <!-- Collar -->
+              <rect x="28" y="38" width="4"  height="8"  fill="#E0E0E0"/>
+              <rect x="32" y="38" width="4"  height="8"  fill="#E0E0E0"/>
+              <!-- Green tie accent -->
+              <rect x="30" y="46" width="4"  height="16" fill="#00FF41"/>
+              <!-- Pixel border frame -->
+              <rect x="0"  y="0"  width="64" height="80" fill="none" stroke="#00FF41" stroke-width="2"/>
+              <!-- Corner pixel decorations -->
+              <rect x="0"  y="0"  width="6" height="6" fill="#00FF41"/>
+              <rect x="58" y="0"  width="6" height="6" fill="#00FF41"/>
+              <rect x="0"  y="74" width="6" height="6" fill="#00FF41"/>
+              <rect x="58" y="74" width="6" height="6" fill="#00FF41"/>
+            </svg>
+            <p class="avatar-label">Muh. Aman Romansyah</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SKILLS SECTION
+    ════════════════════════════════════════════════════════════ -->
+    <section class="skills-section" id="skills">
+      <div class="section-inner">
+        <h2 class="section-title">
+          <span class="prompt-prefix">$</span> ls ~/skills_and_competencies
+        </h2>
+        <div class="skills-grid" role="list" aria-label="Skills and competencies">
+          <span class="skill-tag" role="listitem">Python</span>
+          <span class="skill-tag" role="listitem">C</span>
+          <span class="skill-tag" role="listitem">Linux</span>
+          <span class="skill-tag" role="listitem">Microcontroller</span>
+          <span class="skill-tag" role="listitem">Raspberry Pi</span>
+          <span class="skill-tag" role="listitem">MQTT</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════════
+         PROJECTS SECTION
+    ════════════════════════════════════════════════════════════ -->
+    <section class="projects-section" id="projects">
+      <div class="section-inner">
+        <h2 class="section-title">
+          <span class="prompt-prefix">$</span> ls ~/projects_repository
+        </h2>
+
+        <div class="projects-grid">
+
+          <!-- ── Card 1: PDAM Water Quality ── -->
+          <article class="project-card">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">💧</span>
+              <h3 class="card-title">PDAM Water Quality Monitor</h3>
+              <span class="card-date">Nov 2020</span>
+            </div>
+            <p class="card-desc">
+              IoT system using ESP32 + MQTT protocol. Sensor data is sent to
+              Amazon Web Services and displayed on a live browser dashboard
+              accessible from anywhere via the internet.
+            </p>
+            <div class="card-tags">
+              <span class="card-tag">ESP32</span>
+              <span class="card-tag">MQTT</span>
+              <span class="card-tag">AWS</span>
+              <span class="card-tag">IoT</span>
+            </div>
+            <a
+              class="card-github-link"
+              href="https://github.com/username/pdam-water-quality-monitor"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View PDAM Water Quality Monitor source code on GitHub"
+            >&gt;&nbsp;View Source on GitHub</a>
+          </article>
+
+          <!-- ── Card 2: Smart Agriculture ── -->
+          <article class="project-card">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">🌱</span>
+              <h3 class="card-title">Smart Agriculture Hydroponics</h3>
+              <span class="card-date">Aug 2019</span>
+            </div>
+            <p class="card-desc">
+              Automated nutrient, temperature, and light control system for a
+              hydroponic farm. All plant conditions can be monitored and
+              adjusted remotely over the internet in real time.
+            </p>
+            <div class="card-tags">
+              <span class="card-tag">IoT</span>
+              <span class="card-tag">Sensors</span>
+              <span class="card-tag">Python</span>
+            </div>
+            <a
+              class="card-github-link"
+              href="https://github.com/username/smart-agriculture-hydroponics"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View Smart Agriculture Hydroponics source code on GitHub"
+            >&gt;&nbsp;View Source on GitHub</a>
+          </article>
+
+          <!-- ── Card 3: SmartHouse ── -->
+          <article class="project-card">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">🏠</span>
+              <h3 class="card-title">SmartHouse Nusantara</h3>
+              <span class="card-date">Sep 2018</span>
+            </div>
+            <p class="card-desc">
+              Full IoT smart-home system with light control, digital door lock,
+              door sensor, and fire alarm. All features accessible via Android
+              app, web browser, and Telegram chatbot integration.
+            </p>
+            <div class="card-tags">
+              <span class="card-tag">IoT</span>
+              <span class="card-tag">Android</span>
+              <span class="card-tag">Telegram API</span>
+            </div>
+            <a
+              class="card-github-link"
+              href="https://github.com/username/smarthouse-nusantara"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View SmartHouse Nusantara source code on GitHub"
+            >&gt;&nbsp;View Source on GitHub</a>
+          </article>
+
+          <!-- ── Card 4: Latex Industry ── -->
+          <article class="project-card">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">🏭</span>
+              <h3 class="card-title">Latex Industry Revolution</h3>
+              <span class="card-date">Nov 2018</span>
+            </div>
+            <p class="card-desc">
+              🥉 3rd place — National Student Competition 2018: Industry 4.0
+              (ITB). Digital sorting system using computer vision to analyse
+              the quality of Ribbed Smoked Sheet (RSS) rubber products,
+              monitored via a web browser dashboard.
+            </p>
+            <div class="card-tags">
+              <span class="card-tag">Computer Vision</span>
+              <span class="card-tag">IoT</span>
+              <span class="card-tag">PHP</span>
+            </div>
+            <a
+              class="card-github-link"
+              href="https://github.com/username/latex-industry-revolution"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View Latex Industry Revolution source code on GitHub"
+            >&gt;&nbsp;View Source on GitHub</a>
+          </article>
+
+          <!-- ── Card 5: Soccer Robot ── -->
+          <article class="project-card">
+            <div class="card-header">
+              <span class="card-icon" aria-hidden="true">🤖</span>
+              <h3 class="card-title">Wheeled Soccer Robot — KRSBI</h3>
+              <span class="card-date">Jan 2018</span>
+            </div>
+            <p class="card-desc">
+              Competitive robotics project for Kontes Robot Indonesia 2018,
+              KRSBI-Beroda (Wheeled Soccer Robot) division. Served as
+              programmer for robot logic, movement control, and sensor
+              integration systems.
+            </p>
+            <div class="card-tags">
+              <span class="card-tag">C</span>
+              <span class="card-tag">Microcontroller</span>
+              <span class="card-tag">Robotics</span>
+            </div>
+            <a
+              class="card-github-link"
+              href="https://github.com/username/wheeled-soccer-robot-krsbi"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View Wheeled Soccer Robot KRSBI source code on GitHub"
+            >&gt;&nbsp;View Source on GitHub</a>
+          </article>
+
+        </div><!-- /.projects-grid -->
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       CONTACT FOOTER
+  ════════════════════════════════════════════════════════════ -->
+  <footer class="contact-footer" id="contact">
+    <div class="section-inner">
+      <h2 class="section-title">
+        <span class="prompt-prefix">$</span> ./connect.sh
+      </h2>
+
+      <div class="terminal-window contact-terminal">
+        <div class="terminal-titlebar">
+          <span class="tb-dot tb-red"    aria-hidden="true"></span>
+          <span class="tb-dot tb-yellow" aria-hidden="true"></span>
+          <span class="tb-dot tb-green"  aria-hidden="true"></span>
+          <span class="tb-title">connections</span>
+        </div>
+        <div class="terminal-body">
+          <div class="contact-row">
+            <span class="prompt">romansyahaman@linux:~$</span>
+            <span class="cmd">&nbsp;mailto:Romansyah7714@gmail.com</span>
+            <span class="cursor-blink" aria-hidden="true"></span>
+          </div>
+          <div class="contact-links">
+
+            <a
+              href="mailto:Romansyah7714@gmail.com"
+              class="contact-link"
+              aria-label="Send an email to Romansyah7714@gmail.com"
+            >
+              <!-- Email SVG icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="M2 7l10 7 10-7"/>
+              </svg>
+              <span>Email</span>
+            </a>
+
+            <a
+              href="https://linkedin.com/in/RomansyahAman"
+              class="contact-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View LinkedIn profile"
+            >
+              <!-- LinkedIn SVG icon -->
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+
+            <a
+              href="https://github.com/RomansyahAman"
+              class="contact-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View GitHub profile"
+            >
+              <!-- GitHub SVG icon -->
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.66-.22.66-.48v-1.7
+                  c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61
+                  1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33
+                  -2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64
+                  0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33
+                  1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68
+                  0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.16.58.67.48
+                  A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/>
+              </svg>
+              <span>GitHub</span>
+            </a>
+
+          </div><!-- /.contact-links -->
+        </div><!-- /.terminal-body -->
+      </div><!-- /.terminal-window -->
+
+      <p class="footer-copy">
+        &copy; 2025 Muh. Aman Romansyah &mdash;
+        Built with HTML, CSS &amp; JavaScript &#10084;
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
