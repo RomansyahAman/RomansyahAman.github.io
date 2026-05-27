@@ -89,7 +89,7 @@ const $all = sel => document.querySelectorAll(sel);
       lines: [
         'Loading data...',
         ...TAGLINE_PARTS.map(p => `<span class="t-success">[✓]</span> ${p}`),
-        '<span class="t-success">[✓]</span> ESP32 · AWS · MQTT · Raspberry Pi',
+        '<span class="t-success">[✓]</span> ESP32 · AWS · Raspberry Pi',
         '',
         '<span class="t-success">Status:</span> <span class="t-cmd">open to opportunities</span>',
       ],
